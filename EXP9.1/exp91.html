@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EXP9.1</title>
+  </head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>  
+<body>
+
+<h2>MEGAPLAY REGISTER FORM</h2>
+
+<form ng-app="myApp" ng-controller="validateCtrl" name="myForm" novalidate>
+
+<p>NAME:<br>
+<input type="text" name="user" ng-model="user" required>
+<span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
+<span ng-show="myForm.user.$error.required">Username is required.</span>
+</span>
+</p>
+
+<p>Email:<br>
+<input type="email" name="email" ng-model="email" required>
+<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+<span ng-show="myForm.email.$error.required">Email is required.</span>
+<span ng-show="myForm.email.$error.email">Invalid email address.</span>
+</span>
+</p>
+
+<p>YEAR OF STUDY:<br>
+    <label for="yos">Choose a Department:</label>
+
+    <select name="yos" id="yos">
+      <option value="1st YEAR">1</option>
+      <option value="2nd YEAR">2</option>
+      <option value="3rd YEAR">3</option>
+      <option value="4th YEAR">4</option>
+      <option value="5th YEAR">5</option>
+    </select>
+</p>
+
+<p>DEPARTMENT:<br>
+    <label for="dept">Choose a Department:</label>
+
+    <select name="dept" id="dept">
+      <option value="CSE">CSE</option>
+      <option value="ECE">ECE</option>
+      <option value="EEE">EEE</option>
+      <option value="CIVIL">CIVIL</option>
+      <option value="AEROSPACE">AEROSPACE</option>
+    </select>
+    
+</p>
+
+<p>SCHOOL:<br>
+    <label for="school">Choose a Department:</label>
+
+    <select name="school" id="school">
+      <option value="ENGINEERING">SCHOOL OF ENGINEERING</option>
+      <option value="ARTS">SCHOOL OF ARTS</option>
+      <option value="AGRICULTURE">SCHOOL OF AGRICULTURE</option>
+      <option value="BUSINESS">SCHOOL OF BUSINESS</option>
+    </select>
+    
+</p>
+
+<p>TYPE OF EVENT: <br>
+    <input type="checkbox" id="toe1" name="toe1" ng-model="toe1" required>
+    <label for="toe1"> SINGING</label><br>
+    <input type="checkbox" id="toe2" name="toe2" ng-model="toe2" required>
+    <label for="toe2"> MUSICIAN</label><br>
+    <input type="checkbox" id="toe3" name="toe3" ng-model="toe3" required>
+    <label for="toe3"> CHOREOGRAPHY</label><br>
+
+    <span style="color:red" ng-show="myForm.toe.$dirty && myForm.toe.$invalid">
+    <span ng-show="myForm.toe.$error.required">Type of the event must be selected </span>
+        </span>
+</p>
+<input type="submit"
+ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+myForm.email.$dirty && myForm.email.$invalid">
+</p>
+
+</form>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('validateCtrl', function($scope) {
+    $scope.user = 'Enter the Name';
+    $scope.email = 'Enter the email';
+});
+</script>
+
+</body>
+</html>
